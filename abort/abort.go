@@ -1,6 +1,6 @@
 package abort
 
-func abortOnError(err error) {
+func AbortOnError(err error) {
 	if err != nil {
 		panic(err)
 	}

@@ -11,7 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-func generatePath() string {
+func GeneratePath() string {
 	dbUser := "root"
 	dbPwd := "example"
 	dbURL := os.Getenv("MONGO_URL")
@@ -22,7 +22,7 @@ func generatePath() string {
 	return str
 }
 
-func connect(uri string) *mongo.Client {
+func Connect(uri string) *mongo.Client {
 	if uri == "" {
 		uri = "mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb"
 	}
