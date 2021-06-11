@@ -1,4 +1,4 @@
-package peopleApiResource
+package people
 
 import "encoding/xml"
 

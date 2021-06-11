@@ -1,4 +1,4 @@
-package peopleApiResource
+package db
 
 import (
 	"context"
