@@ -12,17 +12,21 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
+// GeneratePath returns a formated string of the mongo url
+// given global enviroments of the credentials, url and port
 func GeneratePath() string {
-	dbUser := "root"
-	dbPwd := "example"
+	dbUser := os.Getenv("MONGO_USR")
+	dbPwd := os.Getenv("MONGO_PWD")
 	dbURL := os.Getenv("MONGO_URL")
-	port := 27017
+	port := os.Getenv("MONGO_PORT")
 
-	str := fmt.Sprintf("mongodb://%s:%s@%s:%d/?connect=direct", dbUser, dbPwd, dbURL, port)
+	str := fmt.Sprintf("mongodb://%s:%s@%s:%s/?connect=direct", dbUser, dbPwd, dbURL, port)
 
 	return str
 }
 
+// Connect recives a mongo url string and returns a
+// mongo client of that connection.
 func Connect(uri string) *mongo.Client {
 	if uri == "" {
 		uri = "mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb"
